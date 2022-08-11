@@ -10,9 +10,11 @@
 		9ACF4FC628A4E2640043620A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ACF4FC528A4E2640043620A /* AppDelegate.swift */; };
 		9ACF4FC828A4E2640043620A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ACF4FC728A4E2640043620A /* SceneDelegate.swift */; };
 		9ACF4FCA28A4E2640043620A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ACF4FC928A4E2640043620A /* ViewController.swift */; };
-		9ACF4FCD28A4E2640043620A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9ACF4FCB28A4E2640043620A /* Main.storyboard */; };
 		9ACF4FCF28A4E2690043620A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9ACF4FCE28A4E2690043620A /* Assets.xcassets */; };
 		9ACF4FD228A4E2690043620A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9ACF4FD028A4E2690043620A /* LaunchScreen.storyboard */; };
+		9ACF4FDC28A4E91F0043620A /* CountryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ACF4FDB28A4E91F0043620A /* CountryModel.swift */; };
+		9ACF4FDE28A4E9800043620A /* FetchCountries.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ACF4FDD28A4E9800043620A /* FetchCountries.swift */; };
+		9ACF4FE028A4F0E00043620A /* CountryDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ACF4FDF28A4F0E00043620A /* CountryDetailsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,10 +22,12 @@
 		9ACF4FC528A4E2640043620A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9ACF4FC728A4E2640043620A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		9ACF4FC928A4E2640043620A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		9ACF4FCC28A4E2640043620A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		9ACF4FCE28A4E2690043620A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9ACF4FD128A4E2690043620A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9ACF4FD328A4E2690043620A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9ACF4FDB28A4E91F0043620A /* CountryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryModel.swift; sourceTree = "<group>"; };
+		9ACF4FDD28A4E9800043620A /* FetchCountries.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchCountries.swift; sourceTree = "<group>"; };
+		9ACF4FDF28A4F0E00043620A /* CountryDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryDetailsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,15 +60,33 @@
 		9ACF4FC428A4E2640043620A /* Galaktion Nizharadze, Assignment #21 */ = {
 			isa = PBXGroup;
 			children = (
+				9ACF4FD928A4E2920043620A /* SupportingFiles */,
+				9ACF4FDA28A4E9050043620A /* APIService */,
+				9ACF4FC928A4E2640043620A /* ViewController.swift */,
+				9ACF4FDF28A4F0E00043620A /* CountryDetailsViewController.swift */,
+			);
+			path = "Galaktion Nizharadze, Assignment #21";
+			sourceTree = "<group>";
+		};
+		9ACF4FD928A4E2920043620A /* SupportingFiles */ = {
+			isa = PBXGroup;
+			children = (
 				9ACF4FC528A4E2640043620A /* AppDelegate.swift */,
 				9ACF4FC728A4E2640043620A /* SceneDelegate.swift */,
-				9ACF4FC928A4E2640043620A /* ViewController.swift */,
-				9ACF4FCB28A4E2640043620A /* Main.storyboard */,
 				9ACF4FCE28A4E2690043620A /* Assets.xcassets */,
 				9ACF4FD028A4E2690043620A /* LaunchScreen.storyboard */,
 				9ACF4FD328A4E2690043620A /* Info.plist */,
 			);
-			path = "Galaktion Nizharadze, Assignment #21";
+			path = SupportingFiles;
+			sourceTree = "<group>";
+		};
+		9ACF4FDA28A4E9050043620A /* APIService */ = {
+			isa = PBXGroup;
+			children = (
+				9ACF4FDB28A4E91F0043620A /* CountryModel.swift */,
+				9ACF4FDD28A4E9800043620A /* FetchCountries.swift */,
+			);
+			path = APIService;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -127,7 +149,6 @@
 			files = (
 				9ACF4FD228A4E2690043620A /* LaunchScreen.storyboard in Resources */,
 				9ACF4FCF28A4E2690043620A /* Assets.xcassets in Resources */,
-				9ACF4FCD28A4E2640043620A /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -140,6 +161,9 @@
 			files = (
 				9ACF4FCA28A4E2640043620A /* ViewController.swift in Sources */,
 				9ACF4FC628A4E2640043620A /* AppDelegate.swift in Sources */,
+				9ACF4FDC28A4E91F0043620A /* CountryModel.swift in Sources */,
+				9ACF4FDE28A4E9800043620A /* FetchCountries.swift in Sources */,
+				9ACF4FE028A4F0E00043620A /* CountryDetailsViewController.swift in Sources */,
 				9ACF4FC828A4E2640043620A /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -147,14 +171,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		9ACF4FCB28A4E2640043620A /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				9ACF4FCC28A4E2640043620A /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		9ACF4FD028A4E2690043620A /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -289,10 +305,10 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 9BZ4794R5K;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "Galaktion Nizharadze, Assignment #21/Info.plist";
+				INFOPLIST_FILE = "Galaktion Nizharadze, Assignment #21/SupportingFiles/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIMainStoryboardFile = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -317,10 +333,10 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 9BZ4794R5K;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "Galaktion Nizharadze, Assignment #21/Info.plist";
+				INFOPLIST_FILE = "Galaktion Nizharadze, Assignment #21/SupportingFiles/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIMainStoryboardFile = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
