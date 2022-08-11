@@ -11,20 +11,20 @@ class CountryDetailsViewController: UIViewController {
     var data: Country? {
         didSet {
             
-//            mainImageView.image = UIImage(named: "screen`")
-            mainImageView.loadImageUsingCache(withUrl: data!.flagURL)
+            if let url = URL(string: data!.flagURL.png) {
+                mainImageView.load(url: url)
+            }
             
-            
-            
-            regionalBlockLabel.text = "\(data?.regionalBlocs?.first?.acronym ?? "")   \(data?.regionalBlocs?.first?.name ?? "")"
+            regionalBlockLabel.text = "\(data?.regionalBlocs?.first?.acronym ?? "")  -  \(data?.regionalBlocs?.first?.name ?? "")"
             capitalLabel.text = "Capital: \(data?.capital ?? "")"
         }
     }
     
-    var mainImageView: UIImageView = {
+    private let mainImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
-//        imageView.contentMode = .scaleAspectFill
+        imageView.contentMode = .scaleAspectFill
+        imageView.backgroundColor = .white
         
         return imageView
     }()
@@ -60,12 +60,12 @@ class CountryDetailsViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .systemYellow
-        view.addSubview(mainImageView)
-        configureUIElements()
+        view.backgroundColor = .white
+        
     }
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
+        configureUIElements()
         
     }
     
@@ -77,9 +77,10 @@ class CountryDetailsViewController: UIViewController {
   
     private func configureUIElements() {
         confStackView()
+        view.addSubview(mainImageView)
         
         NSLayoutConstraint.activate([
-            mainImageView.topAnchor.constraint(equalTo: view.topAnchor,constant: 0),
+            mainImageView.topAnchor.constraint(equalTo: view.topAnchor,constant: 120),
             mainImageView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0),
             mainImageView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0),
             mainImageView.heightAnchor.constraint(equalToConstant: 250),
@@ -88,10 +89,8 @@ class CountryDetailsViewController: UIViewController {
             descriptionVerticalStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30),
             descriptionVerticalStackView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -70),
             descriptionVerticalStackView.heightAnchor.constraint(equalToConstant: 50)
-            
         ])
-        
-        
     }
-
+    
 }
+

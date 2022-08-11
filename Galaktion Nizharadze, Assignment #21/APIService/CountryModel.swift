@@ -10,11 +10,11 @@ import Foundation
 struct Country: Decodable {
     let name: String
     let capital: String?
-    let flagURL: String
+    let flagURL: Flags
     let regionalBlocs: [RegionalBloc]?
     
     enum CodingKeys: String, CodingKey {
-        case flagURL = "flag"
+        case flagURL = "flags"
         case name, capital, regionalBlocs
     }
 }
@@ -23,4 +23,8 @@ struct Country: Decodable {
 struct RegionalBloc: Decodable {
     let acronym: String
     let name: String
+}
+
+struct Flags: Decodable {
+    let png: String
 }

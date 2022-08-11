@@ -10,8 +10,10 @@ import UIKit
 class ViewController: UIViewController {
     
     var countryList: [Country] = [Country]()
-    
     var filteredData = [Country] ()
+    
+    private let activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView.init(style: UIActivityIndicatorView.Style.medium)
+    
     
     private struct UIConstants {
         static let searchBarAndTableViewX: CGFloat = 0
@@ -23,6 +25,7 @@ class ViewController: UIViewController {
         static let tableViewHeight: CGFloat = UIScreen.main.bounds.height - 180
     }
     
+    
     private let searchBar: UISearchBar = {
         let bar = UISearchBar()
         bar.placeholder = "Search here..."
@@ -32,6 +35,7 @@ class ViewController: UIViewController {
                            height: UIConstants.searchBarHeight)
         return bar
     }()
+    
     
     private let tableView:UITableView = {
         let tableView = UITableView()
@@ -48,21 +52,28 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        confNavigationControllerAndViewSubviews()
+        fetchCountry()
+        tableViewAndSearchbarDelegateConform()
+    }
+    
+    
+    private func confNavigationControllerAndViewSubviews() {
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.title = "Countries"
         view.backgroundColor = .white
         view.addSubview(searchBar)
         view.addSubview(tableView)
-        fetchCountry()
+        view.addSubview(activityIndicator)
+        activityIndicator.startAnimating()
+        activityIndicator.center = self.view.center
+    }
+    
+    private func tableViewAndSearchbarDelegateConform() {
         searchBar.delegate = self
         tableView.delegate = self
         tableView.dataSource = self
     }
-    
-    
-    
- 
     
     private func fetchCountry() {
         FetchCountries.shared.fetchCountry { result in
@@ -71,10 +82,10 @@ class ViewController: UIViewController {
                 self.countryList = countries
                 self.filteredData = self.countryList
                 self.tableView.reloadData()
+                self.activityIndicator.removeFromSuperview()
             case .failure(let error):
                 print(error)
             }
-      
         }
     }
     
@@ -95,32 +106,20 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let vc = CountryDetailsViewController()
-        
         vc.data = filteredData[indexPath.row]
-//        let url = URL(string: filteredData[indexPath.row].flagURL)!
-//        vc.mainImageView.load(url: url)
-//        print(url)
-//        print(Thread.current)
-//        
-        
+
         navigationController?.pushViewController(vc, animated: true)
-        
     }
 }
 
 
 extension ViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        // When there is no text, filteredData is the same as the original data
-        // When user has entered text into the search box
-        // Use the filter method to iterate over all items in the data array
-        // For each item, return true if the item should be included and false if the
-        // item should NOT be included
+        
         filteredData = searchText.isEmpty ? countryList : countryList.filter({(dataString: Country) -> Bool in
-            // If dataItem matches the searchText, return true to include it
             return dataString.name.range(of: searchText, options: .caseInsensitive) != nil
         })
-
+        
         tableView.reloadData()
     }
 }
